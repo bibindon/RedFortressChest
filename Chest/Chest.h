@@ -67,7 +67,7 @@ private:
     int m_durability = -1;
 };
 
-class StorehouseLib
+class Chest
 {
 public:
 

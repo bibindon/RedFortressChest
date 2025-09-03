@@ -237,7 +237,7 @@ D3DXMATERIAL* d3dxMaterials;
 float f = 0.0f;
 bool bShowMenu = true;
 
-StorehouseLib menu;
+Chest menu;
 
 static void TextDraw(LPD3DXFONT pFont, wchar_t* text, int X, int Y)
 {

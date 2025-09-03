@@ -19,7 +19,7 @@ static std::vector<std::wstring> split(const std::wstring& s, wchar_t delim)
     return result;
 }
 
-void StorehouseLib::Init(IFont* font,
+void Chest::Init(IFont* font,
                          ISoundEffect* SE,
                          ISprite* sprCursor,
                          ISprite* sprBackground,
@@ -32,7 +32,7 @@ void StorehouseLib::Init(IFont* font,
     m_bEnglish = bEnglish;
 }
 
-void StorehouseLib::Finalize()
+void Chest::Finalize()
 {
     delete m_sprBackground;
     delete m_sprCursor;
@@ -40,17 +40,17 @@ void StorehouseLib::Finalize()
     delete m_font;
 }
 
-void NSChest::StorehouseLib::SetInventoryList(const std::vector<StoreItem>& arg)
+void NSChest::Chest::SetInventoryList(const std::vector<StoreItem>& arg)
 {
     m_leftList = arg;
 }
 
-void NSChest::StorehouseLib::SetStorehouseList(const std::vector<StoreItem>& arg)
+void NSChest::Chest::SetStorehouseList(const std::vector<StoreItem>& arg)
 {
     m_rightList = arg;
 }
 
-void NSChest::StorehouseLib::MoveFromInventoryToStorehouse(const std::wstring& id, const int subid)
+void NSChest::Chest::MoveFromInventoryToStorehouse(const std::wstring& id, const int subid)
 {
     auto it = std::find_if(m_leftList.begin(), m_leftList.end(),
                            [&](const StoreItem& x)
@@ -104,7 +104,7 @@ void NSChest::StorehouseLib::MoveFromInventoryToStorehouse(const std::wstring& i
     }
 }
 
-void NSChest::StorehouseLib::MoveFromStorehouseToInventory(const std::wstring& id, const int subid)
+void NSChest::Chest::MoveFromStorehouseToInventory(const std::wstring& id, const int subid)
 {
     auto it = std::find_if(m_rightList.begin(), m_rightList.end(),
                            [&](const StoreItem& x)
@@ -158,7 +158,7 @@ void NSChest::StorehouseLib::MoveFromStorehouseToInventory(const std::wstring& i
     }
 }
 
-std::wstring StorehouseLib::Up()
+std::wstring Chest::Up()
 {
     int work = 0;
 
@@ -211,7 +211,7 @@ std::wstring StorehouseLib::Up()
     return L"";
 }
 
-std::wstring StorehouseLib::Down()
+std::wstring Chest::Down()
 {
     int work = 0;
     if (m_eFocus == eFocus::LEFT)
@@ -265,7 +265,7 @@ std::wstring StorehouseLib::Down()
     return L"";
 }
 
-std::wstring StorehouseLib::Right()
+std::wstring Chest::Right()
 {
     if (!m_rightList.empty())
     {
@@ -288,7 +288,7 @@ std::wstring StorehouseLib::Right()
     return std::wstring();
 }
 
-std::wstring StorehouseLib::Left()
+std::wstring Chest::Left()
 {
     if (!m_leftList.empty())
     {
@@ -311,7 +311,7 @@ std::wstring StorehouseLib::Left()
     return std::wstring();
 }
 
-std::wstring StorehouseLib::Into()
+std::wstring Chest::Into()
 {
     std::wstring result;
     if (m_eFocus == eFocus::LEFT)
@@ -424,7 +424,7 @@ std::wstring StorehouseLib::Into()
     return result;
 }
 
-std::wstring StorehouseLib::Back()
+std::wstring Chest::Back()
 {
     std::wstring result;
     result = _T("EXIT");
@@ -433,17 +433,17 @@ std::wstring StorehouseLib::Back()
     return result;
 }
 
-std::wstring NSChest::StorehouseLib::Next()
+std::wstring NSChest::Chest::Next()
 {
     return Down();
 }
 
-std::wstring NSChest::StorehouseLib::Previous()
+std::wstring NSChest::Chest::Previous()
 {
     return Up();
 }
 
-void StorehouseLib::CursorOn(const int x, const int y)
+void Chest::CursorOn(const int x, const int y)
 {
     // ホイール移動して0.5秒以内なら反応しないようにする
     {
@@ -615,7 +615,7 @@ void StorehouseLib::CursorOn(const int x, const int y)
     }
 }
 
-std::wstring StorehouseLib::Click(const int x, const int y)
+std::wstring Chest::Click(const int x, const int y)
 {
     std::wstring result;
     if (m_eFocus == eFocus::LEFT)
@@ -759,7 +759,7 @@ std::wstring StorehouseLib::Click(const int x, const int y)
     return result;
 }
 
-void StorehouseLib::Draw()
+void Chest::Draw()
 {
     // 背景
     m_sprBackground->DrawImage(0, 0);
@@ -931,7 +931,7 @@ void StorehouseLib::Draw()
 
 }
 
-void NSChest::StorehouseLib::UseWheel()
+void NSChest::Chest::UseWheel()
 {
     m_wheelUseTime = std::chrono::system_clock::now();
 }
