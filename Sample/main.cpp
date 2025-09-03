@@ -70,7 +70,7 @@ static std::vector<std::wstring> split(const std::wstring& s, wchar_t delim)
     return result;
 }
 
-using namespace NSStorehouseLib;
+using namespace NSChest;
 
 class Sprite : public ISprite
 {

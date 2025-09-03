@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <tchar.h>
 
-using namespace NSStorehouseLib;
+using namespace NSChest;
 
 static std::vector<std::wstring> split(const std::wstring& s, wchar_t delim)
 {
@@ -40,17 +40,17 @@ void StorehouseLib::Finalize()
     delete m_font;
 }
 
-void NSStorehouseLib::StorehouseLib::SetInventoryList(const std::vector<StoreItem>& arg)
+void NSChest::StorehouseLib::SetInventoryList(const std::vector<StoreItem>& arg)
 {
     m_leftList = arg;
 }
 
-void NSStorehouseLib::StorehouseLib::SetStorehouseList(const std::vector<StoreItem>& arg)
+void NSChest::StorehouseLib::SetStorehouseList(const std::vector<StoreItem>& arg)
 {
     m_rightList = arg;
 }
 
-void NSStorehouseLib::StorehouseLib::MoveFromInventoryToStorehouse(const std::wstring& id, const int subid)
+void NSChest::StorehouseLib::MoveFromInventoryToStorehouse(const std::wstring& id, const int subid)
 {
     auto it = std::find_if(m_leftList.begin(), m_leftList.end(),
                            [&](const StoreItem& x)
@@ -104,7 +104,7 @@ void NSStorehouseLib::StorehouseLib::MoveFromInventoryToStorehouse(const std::ws
     }
 }
 
-void NSStorehouseLib::StorehouseLib::MoveFromStorehouseToInventory(const std::wstring& id, const int subid)
+void NSChest::StorehouseLib::MoveFromStorehouseToInventory(const std::wstring& id, const int subid)
 {
     auto it = std::find_if(m_rightList.begin(), m_rightList.end(),
                            [&](const StoreItem& x)
@@ -433,12 +433,12 @@ std::wstring StorehouseLib::Back()
     return result;
 }
 
-std::wstring NSStorehouseLib::StorehouseLib::Next()
+std::wstring NSChest::StorehouseLib::Next()
 {
     return Down();
 }
 
-std::wstring NSStorehouseLib::StorehouseLib::Previous()
+std::wstring NSChest::StorehouseLib::Previous()
 {
     return Up();
 }
@@ -931,57 +931,57 @@ void StorehouseLib::Draw()
 
 }
 
-void NSStorehouseLib::StorehouseLib::UseWheel()
+void NSChest::StorehouseLib::UseWheel()
 {
     m_wheelUseTime = std::chrono::system_clock::now();
 }
 
-void NSStorehouseLib::StoreItem::SetId(const std::wstring& arg)
+void NSChest::StoreItem::SetId(const std::wstring& arg)
 {
     m_id = arg;
 }
 
-std::wstring NSStorehouseLib::StoreItem::GetId() const
+std::wstring NSChest::StoreItem::GetId() const
 {
     return m_id;
 }
 
-void NSStorehouseLib::StoreItem::SetSubId(const int arg)
+void NSChest::StoreItem::SetSubId(const int arg)
 {
     m_idSub = arg;
 }
 
-int NSStorehouseLib::StoreItem::GetSubId() const
+int NSChest::StoreItem::GetSubId() const
 {
     return m_idSub;
 }
 
-void NSStorehouseLib::StoreItem::SetName(const std::wstring& arg)
+void NSChest::StoreItem::SetName(const std::wstring& arg)
 {
     m_name = arg;
 }
 
-std::wstring NSStorehouseLib::StoreItem::GetName() const
+std::wstring NSChest::StoreItem::GetName() const
 {
     return m_name;
 }
 
-void NSStorehouseLib::StoreItem::SetLevel(const int arg)
+void NSChest::StoreItem::SetLevel(const int arg)
 {
     m_level = arg;
 }
 
-int NSStorehouseLib::StoreItem::GetLevel() const
+int NSChest::StoreItem::GetLevel() const
 {
     return m_level;
 }
 
-void NSStorehouseLib::StoreItem::SetDurability(const int arg)
+void NSChest::StoreItem::SetDurability(const int arg)
 {
     m_durability = arg;
 }
 
-int NSStorehouseLib::StoreItem::GetDurability() const
+int NSChest::StoreItem::GetDurability() const
 {
     return m_durability;
 }
