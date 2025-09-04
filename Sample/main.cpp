@@ -129,6 +129,16 @@ public:
     {
     }
 
+    void OnDeviceLost()
+    {
+        m_D3DSprite->OnLostDevice();
+    }
+
+    void OnDeviceReset()
+    {
+        m_D3DSprite->OnResetDevice();
+    }
+
 private:
 
     const Ptr<LPDIRECT3DDEVICE9>& m_pD3DDevice;
@@ -197,6 +207,16 @@ public:
 
     ~Font()
     {
+    }
+
+    void OnDeviceLost()
+    {
+        m_pFont->OnLostDevice();
+    }
+
+    void OnDeviceReset()
+    {
+        m_pFont->OnResetDevice();
     }
 
 private:
