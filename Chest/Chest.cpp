@@ -985,3 +985,29 @@ int NSChest::StoreItem::GetDurability() const
 {
     return m_durability;
 }
+
+void NSChest::Chest::OnDeviceLost()
+{
+    if (m_sprBackground != nullptr)
+    {
+        m_sprBackground->OnDeviceLost();
+    }
+
+    if (m_sprCursor != nullptr)
+    {
+        m_sprCursor->OnDeviceLost();
+    }
+}
+
+void NSChest::Chest::OnDeviceReset()
+{
+    if (m_sprBackground != nullptr)
+    {
+        m_sprBackground->OnDeviceReset();
+    }
+
+    if (m_sprCursor != nullptr)
+    {
+        m_sprCursor->OnDeviceReset();
+    }
+}

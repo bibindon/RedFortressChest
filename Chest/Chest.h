@@ -104,6 +104,9 @@ public:
     // ホイール使ってから0.5秒以内はカーソルを無効にするため、ホイールを使ったら
     // 教えてもらう必要がある
     void UseWheel();
+
+    void OnDeviceLost();
+    void OnDeviceReset();
     
 private:
 
